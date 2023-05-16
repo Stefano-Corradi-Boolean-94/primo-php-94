@@ -2,10 +2,11 @@
 
 //var_dump($_GET);
 
-
-$name = $_GET['name'];
-$lastname = $_GET['lastname'];
-$email = $_GET['email'];
+// verifico se esiste $_GET['name'], in alternativa stampo 'manca il nome'
+$name = $_GET['name'] ?? 'manca il nome';
+$lastname = $_GET['lastname'] ?? 'manca il cognome';
+// lo stesso controllo con operatore ternario
+$email = isset($_GET['email']) ? $_GET['email'] : 'manca la mail';
 
 ?>
 

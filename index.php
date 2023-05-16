@@ -40,10 +40,142 @@ $testo_ucfirst= ucfirst($testo);
 // come capitalize
 $testo_ucwords = ucwords($testo);
 
+$testoA = 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus alias, maiores repellendus provident, ducimus officiis modi eos aliquid culpa similique quas pariatur harum molestias, fugiat laudantium sit. Totam, cupiditate est?';
+
+$testoA .= ' - Questo lo ho concatenato al testoA';
+
+
+// ARRAY /////////////////////////
+$colori = ['giallo','rosso', 'blu'];
+// equivalente di includes
+if(in_array('verde',$colori)){
+  var_dump('verde esiste');
+}else{
+  var_dump('verde NON esiste');
+}
+if(array_search('verde',$colori)){
+  var_dump('verde esiste ed è a chiave ' . array_search('verde',$colori));
+}else{
+  var_dump('verde NON esiste');
+}
+
+// 'pusho un nuovo colore'
+$colori[] = 'verde';
+if(in_array('verde',$colori)){
+  var_dump('verde esiste');
+}else{
+  var_dump('verde NON esiste');
+}
+// se trovo l'occerrenza ottengo l'indice dell'elemento
+if(array_search('verde',$colori)){
+  var_dump('verde esiste ed è a chiave ' . array_search('verde',$colori));
+}else{
+  var_dump('verde NON esiste');
+}
+var_dump($colori); 
+var_dump($colori[1]); 
+
+$user = [
+  'name' => 'Ugo',
+  'lastname' => 'De Ughi',
+];
+// verifico l'esistena della chiave 'age'
+if(array_key_exists('age',$user)){
+  var_dump('age esiste');
+}else{
+  var_dump('age NON esiste');
+}
+// pusho l'età
+$user['age'] = 30;
+if(array_key_exists('age',$user)){
+  var_dump('age esiste');
+}else{
+  var_dump('age NON esiste');
+}
+echo '-----------------------------------------------<br>';
+var_dump($user); 
+//var_dump($user[0]); // errore, non esiste
+var_dump($user['name']); 
+var_dump($user['lastname']); 
+// metto in una array tutte le chiavi
+var_dump(array_keys($user));
+
+// array di array (equivalente all'array di oggetti)
+$team = [
+  [
+    'name' => 'Ugo',
+    'lastname' => 'De Ughi',
+  ],
+  [
+    'name' => 'Giuseppe',
+    'lastname' => 'Verdi',
+  ],
+  [
+    'name' => 'Martina',
+    'lastname' => 'Bianchi',
+  ]
+];
+var_dump($team); 
+var_dump($team[1]['lastname']); // verdi
+
+$team2 = [
+  'programmatore' => [
+    'name' => 'Ugo',
+    'lastname' => 'De Ughi',
+  ],
+  'pubblicitario' => [
+    'name' => 'Giuseppe',
+    'lastname' => 'Verdi',
+  ],
+  'CEO' => [
+    'name' => 'Martina',
+    'lastname' => 'Bianchi',
+    ]
+  ];
+var_dump($team2['CEO']);
 
 
 // per stampare una variabile
 //echo $nome;
+
+
+// CICLI /////////////////////////////////////
+echo '---------------CICLI--------------------------------<br>';
+for($i = 0; $i < 10; $i++){
+  echo "$i <br>";
+}
+
+echo "<hr>";
+// il primo parametro è l'array as elemento ciclato
+foreach($colori as $colore){
+  echo "$colore <br>";
+}
+
+echo "<hr>";
+
+foreach($user as $valore){
+  echo "Valore: $valore <br>";
+}
+echo "<hr>";
+
+foreach($user as $chiave => $valore){
+  echo "Chiave: $chiave - Valore: $valore <br>";
+}
+echo "<hr>";
+
+$animals = [
+  "mammals" => ["cow", "pig", "horse", "dog"],
+  "birds" => ["duck", "chicken"]
+];
+
+
+foreach ($animals as $specie => $animalClass) {
+  echo "<h3>$specie</h3>";
+ foreach($animalClass as $indice =>  $animal) {
+     echo $indice . ' ' .$animal . '<br>';
+ }
+}
+
 
 
 ?>
@@ -74,6 +206,24 @@ $testo_ucwords = ucwords($testo);
   <p><?php echo $testo_ucfirst ?></p>
   <h2>Testo testo_ucwords</h2>
   <p><?php echo $testo_ucwords  ?></p>
+  <hr>
+  <p>
+    <?php echo $testoA ?>
+  </p>
+
+  <hr>
+  
+  <ul>
+    <?php foreach($colori as $colore){ ?>
+      <li><?php echo $colore ?></li>
+    <?php } ?>
+  </ul>
+
+  <ul>
+    <?php foreach($colori as $colore): ?>
+      <li><?php echo $colore ?></li>
+    <?php endforeach; ?>
+  </ul>
   
 </body>
 </html>
