@@ -176,18 +176,41 @@ foreach ($animals as $specie => $animalClass) {
  }
 }
 
+// FUNZIONI /////////////////////////////////////
 
+function stampaSalutoConEcho(){
+  echo 'Ciao con echo';
+}
+function stampaSalutoDinamico($saluto){
+  echo 'Ecco il mio saluto: ' . $saluto;
+}
+function stampaSalutoSenzaEcho(){
+  return 'Ciao senza echo';
+}
+function printUtente($utente){
+  echo $utente['name'] . ' ' . $utente['lastname'];
+}
+
+$name = 'Ugo';
+function stampaNome(){
+  //echo $name; // ottengo un errore perché le funzioni non vedono le variabili esterne
+}
+
+
+// INCLUDE /////////////////////////////////////
+echo '---------------INCLUDE--------------------------------<br>';
+include './vars.php';
+var_dump($colore_preferito, $numero_preferito);
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>primo php</title>
-</head>
+<?php
+
+require_once __DIR__ . '/partials/head.php';
+
+?>
 <body>
   <h1>Primo php</h1>
   <!-- tutte le volte che dobbiamo stampare php bisogna aprire e chiudere i tag php e chiamare la var con echo  -->
@@ -224,6 +247,13 @@ foreach ($animals as $specie => $animalClass) {
       <li><?php echo $colore ?></li>
     <?php endforeach; ?>
   </ul>
+
+  <hr>
+
+  <h3><?php stampaSalutoConEcho() ?></h3>
+  <h3><?php echo stampaSalutoSenzaEcho() ?></h3>
+  <h3><?php printUtente($user)?></h3>
+  <h3><?php stampaSalutoDinamico('Ciao!')?></h3>
   
 </body>
 </html>
