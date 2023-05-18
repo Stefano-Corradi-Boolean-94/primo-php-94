@@ -202,6 +202,7 @@ echo '---------------INCLUDE--------------------------------<br>';
 include './vars.php';
 var_dump($colore_preferito, $numero_preferito);
 
+
 ?>
 
 <!DOCTYPE html>
