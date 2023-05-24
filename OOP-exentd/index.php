@@ -1,13 +1,17 @@
 <?php
 
 
+
 require_once __DIR__ . '/Models/User.php';
 require_once __DIR__ . '/Models/Empplyee.php';
 
 
  $giuseppe = new User('Giuseppe', 'giuseppe@verdi.com', 80);
+ $giuseppe->street =  'Via dei Platani 1';
+ $giuseppe->city =  'Milano';
+ $giuseppe->zipcode =  '20100';
  //$giuseppe->age = 'ciao';
- var_dump($giuseppe->getAge());
+ var_dump($giuseppe->getFullAddress());
 
  $martina = new User('Martina', 'martina@verdi.com', 40);
 

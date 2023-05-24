@@ -1,11 +1,14 @@
 <?php
 
+require_once __DIR__ . '/../Traits/Address.php';
 
 class User {
+
+  use Address;
+
   public $name;
   public $email;
   private $age;
-  public $address;
   public $discount = 0;
 
   public function __construct($_name, $_email, $_age){
